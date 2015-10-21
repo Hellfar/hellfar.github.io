@@ -1,7 +1,7 @@
 markdown:		kramdown
 highlighter:	pygments
 
-exclude: ["watch.sh"]
+exclude: ["_exclude","watch.sh"]
 
 defaults:
   -

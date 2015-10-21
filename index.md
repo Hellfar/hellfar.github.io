@@ -26,6 +26,17 @@ This para line starts at the first column. However,
 with a hard line break. \\
 And another one.
 
+Bellow some $$ \LaTeX $$ expressions:
+
+---
+$$ 5 + 5 $$
+
+---
+\[
+\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\]
+
+---
 $$
 \begin{align*}
   & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
