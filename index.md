@@ -14,6 +14,12 @@ int					main( int argc, char * * argv )
 }
 {% endhighlight %}
 
-I am also learning to use jekyll at the time.
+This `is a code` span!
 
-This `is not a code` span!
+This para line starts at the first column. However,
+      the following lines can be indented any number of spaces/tabs.
+   The para continues here.  
+
+  This is another paragraph, not connected to the above one. But  
+with a hard line break. \\
+And another one.
