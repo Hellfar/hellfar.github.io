@@ -1,1 +1,6 @@
-{% capture baseurl %}{{ site.github.project_title | prepend:'/' }}{% endcapture %}
+{% capture t_baseurl %}{{ site.github.project_title | prepend:'/' }}{% endcapture %}
+{% capture path %}{{ site.url }}{{ site.baseurl }}/savedfiles/{% endcapture %}
+
+{% if jekyll.environment != "development" %}
+	{% assign baseurl = "/" %}
+{% endif %}
