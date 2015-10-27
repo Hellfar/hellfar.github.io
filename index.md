@@ -13,6 +13,7 @@ test
 {{ site.url }}
 {{ site.baseurl }}
 
+test
 {% assign pathParts = page.path | split: "/" %}
 {% assign length = pathParts.size | minus: 2 %}
 {% assign path = "" %}
