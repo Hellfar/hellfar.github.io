@@ -1,8 +1,8 @@
 ---
-title:		Future awesome page
+title:		title
 ---
 
-Some awesomeness gonna appears in here any soon.
+text
 
 {{ page.title }}  
 {{ jekyll.environment }}  
