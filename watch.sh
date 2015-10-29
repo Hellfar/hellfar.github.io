@@ -1,3 +1,3 @@
 #!/bin/bash
 
-jekyll build --watch
+jekyll build --watch --config _config.yml,_local_config.yml

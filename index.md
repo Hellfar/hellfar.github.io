@@ -11,6 +11,8 @@ Some awesomeness gonna appears in here any soon.
 
 test
 {{ site.url }}
+
+test
 {{ site.baseurl }}
 
 test
