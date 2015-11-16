@@ -2,27 +2,16 @@
 title:		title
 ---
 
-text
+Pierre Louchet
+==============
 
-{{ page.title }}  
-{{ jekyll.environment }}  
-{{ page.url }}  
-{{ page.path }}
+Welcome on my fabulous brand new website.
 
-test
-{{ site.url }}
-
-test
-{{ site.baseurl }}
-
-test
-{% assign pathParts = page.path | split: "/" %}
-{% assign length = pathParts.size | minus: 2 %}
-{% assign path = "" %}
-{% for c in (0..length) %}
-    {% capture path %}{{ path }}/{{pathParts[c]}}{% endcapture %}
-{% endfor %}
-{{ path }}
-
-test
-{{ baseurl }}
+list:
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="..{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
