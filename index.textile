@@ -2,10 +2,9 @@
 title:		Pierre Louchet
 ---
 
-Pierre Louchet
-==============
+h1. Pierre Louchet
 
 {% for post in site.posts %}
-- [{{ post.title }}]({{ site.baseurl }}{{ post.url }})
+* "{{ post.title }}":{{ site.baseurl }}{{ post.url }}
 {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
 {% endfor %}
