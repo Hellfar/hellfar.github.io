@@ -5,9 +5,11 @@ title:		title
 Pierre Louchet
 ==============
 
-test
-{{ base }}{{base}}
 <!-- {{ base }} -->
+<!-- {{ page.layout }} -->
+<!-- {{ page.layout.base }} -->
+{{ site }}
+{{ site.test }}
 
 list:
 <ul>
