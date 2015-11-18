@@ -15,7 +15,7 @@ int					main( int argc, char * * argv )
 {% endhighlight %}
 
 {% if jekyll.environment != "development" %}
-	{% gist 8387126 %}
+{% gist 8387126 %}
 {% endif %}
 
 This `is a code` span!
