@@ -12,8 +12,8 @@ _Evolving slowly into awesomeness._
 {% endfor %}
 
 <div class="list-group" style="width:150px;">
-	<a class="list-group-item" href="#"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
-	<a class="list-group-item" href="#"><i class="fa fa-book fa-fw"></i>&nbsp; Portfolio</a>
-	<a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw"></i>&nbsp; Resume</a>
-	<a class="list-group-item" href="#"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
+    <a class="list-group-item" href="#"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
+    <a class="list-group-item" href="#"><i class="fa fa-book fa-fw"></i>&nbsp; Portfolio</a>
+    <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw"></i>&nbsp; Resume</a>
+    <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
 </div>
