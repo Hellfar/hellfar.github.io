@@ -1,11 +1,35 @@
-markdown:		kramdown
-highlighter:	pygments
+# Site settings
+title: Pierre Louchet
+email: pierre.louchet@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  I am an enthusiastic Information Tech student from Epitech, a school that pushes toward innovation.<br />
+  I love discover new technology and technique which make me able to express creativity and skills.<br />
+  Thus, I would say that I am a learner.
 
-exclude: ["_exclude","watch.sh"]
+baseurl: "" # the subpath of your site, e.g. /blog/
+# url: "http://hellfar.github.io" # the base hostname & protocol for your site
+# twitter_username:  Hellfar
+github_username:   Hellfar
+linkedin_username: pierrelouchet
 
+# Build settings
 defaults:
   -
     scope:
       path: ""
     values:
       layout: "default"
+
+exclude: ["_exclude","watch.sh"]
+
+markdown: redcarpet
+highlighter: pygments
+pygments_options: ['lineanchors', 'linenos=table']
+gems:
+- jekyll-mentions
+- jemoji
+- jekyll-redirect-from
+- jekyll-sitemap
+- jekyll-feed
+
+- jekyll-paginate
