@@ -4,10 +4,10 @@ title: About
 permalink: /about/
 ---
 
-I am an enthusiastic Information Tech student from Epitech, a school that pushes toward innovation.  
-I love discover new technology and technique make me able to express creativity and skills.  
-Thus, I would say that I am a learner.
+{{ site.description }}
 
+
+## contact
 <div class="footer-col  footer-col-2">
   <ul class="social-media-list">
 	{% if site.github_username %}
