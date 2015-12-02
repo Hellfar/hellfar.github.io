@@ -1,8 +1,0 @@
----
-title:		Pierre Louchet
----
-
-{% for post in site.posts %}
-* "{{ post.title }}":{{ site.baseurl }}{{ post.url }}
-{{ post.excerpt | remove: '<p>' | remove: '</p>' }}
-{% endfor %}
