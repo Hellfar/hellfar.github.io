@@ -114,6 +114,8 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 .post-content h4 { font-size: 20px; }
 @media screen and (max-width: 800px) { .post-content h4 { font-size: 18px; } }
 
+#social > .list-inline > li { padding-top: 5px; padding-bottom: 5px; }
+
 /** Syntax highlighting styles */
 .highlight { background: #fff; }
 .highlight .c { color: #998; font-style: italic; }
