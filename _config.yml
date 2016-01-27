@@ -14,7 +14,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 # twitter_username:  Hellfar
 github_username:         Hellfar
 linkedin_username:       pierrelouchet
-stack-overflow_username: 5384061
+stack-overflow_username: 5384061/hellfar
 
 # Build settings
 defaults:
