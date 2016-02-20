@@ -189,5 +189,16 @@ permalink: /about/
 	  </a>
 	</li>
 	{% endif %}
+	{% if site.codeschool_username %}
+	<li>
+		<a href="https://www.codeschool.com/users/{{ site.codeschool_username }}" >
+			<span class="icon  icon--codeschool">
+<svg xmlns="http://www.w3.org/2000/svg" width="196" height="196" viewBox="0 0 196 196"><path fill="#919191" d="M108.9 45.5v25.2l28.6 27-28.6 26.9v25.2l55.2-52.1-55.2-52.2zm-21.3 79.1l-28.6-26.9 28.6-27v-25.2l-55.2 52.2 55.2 52.1v-25.2zm10.6-124.9c-54.1 0-98 43.9-98 98s43.9 98 98 98 98-43.9 98-98-43.8-98.1-98-98zm0 178.3c-44.4 0-80.4-36-80.4-80.4s36-80.4 80.4-80.4 80.4 36 80.4 80.4-35.9 80.4-80.4 80.4z"/></svg>
+			</span>
+
+			<span class="username">{{ site.codeschool_username }}</span>
+		</a>
+	</li>
+	{% endif %}
   </ul>
 </div>

@@ -15,6 +15,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 github_username:         Hellfar
 linkedin_username:       pierrelouchet
 stack-overflow_username: 5384061/hellfar
+codeschool_username:     2291772
 
 # Build settings
 defaults:
@@ -27,7 +28,7 @@ defaults:
 exclude: ["_exclude","watch.sh"]
 
 markdown: kramdown
-highlighter: rouge
+highlighter: pygment
 pygments_options: ['lineanchors', 'linenos=table']
 gems:
 - jekyll-mentions
