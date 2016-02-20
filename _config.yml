@@ -37,6 +37,8 @@ gems:
 - jekyll-sitemap
 - jekyll-feed
 
+- jekyll-gist
+
 - jekyll-sass-converter
 - jekyll-paginate
 
