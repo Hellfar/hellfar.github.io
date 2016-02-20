@@ -28,7 +28,7 @@ defaults:
 exclude: ["_exclude","watch.sh"]
 
 markdown: kramdown
-highlighter: pygment
+highlighter: rouge
 pygments_options: ['lineanchors', 'linenos=table']
 gems:
 - jekyll-mentions
