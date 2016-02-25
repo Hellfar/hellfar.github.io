@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script src="three.min.js"></script>
+		<script src="OBJLoader.js"></script>
+		<title>shape reader</title>
+		<style>
+			.dropzone
+			{
+				border			: 2px dashed #BBB;
+				border-radius	: 5px;
+				padding			: 25px;
+				text-align		: center;
+				color			: #BBB;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="render" >
+			<div id="shapeList" ></div>
+			<div class="dropzone" >Drop shapes here</div>
+			<output>
+			</output>
+
+			<script>
+				function	displayFileByType( file )
+				{
+					var		name = escape(file.name),
+							output = document.querySelector("ul").appendChild(document.createElement('li')),
+							reader = new FileReader(),
+							content;
+
+					output.innerHTML = '<strong>'+ name +'</strong> ('+ (file.type || 'n/a') +') - '+ file.size +' bytes, last modified: '+ ((file.lastModifiedDate) ? file.lastModifiedDate.toLocaleDateString() : 'n/a');
+					if (name.match(/\.obj$/))
+					{
+						var	items = {};
+
+						reader.onload = (function(f)
+						{
+							return (function (e)
+							{
+								content = e.target.result;
+
+								output.innerHTML += '<br />\n';
+
+								// parser(content.split("\n"), items);
+								// draw(output.querySelector('canvas'), items);
+
+var camera, scene, renderer;
+
+var mouseX = 0, mouseY = 0;
+
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+
+
+init();
+animate();
+
+
+function init() {
+
+	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+	camera.position.z = 250;
+
+	// scene
+
+	scene = new THREE.Scene();
+
+	var ambient = new THREE.AmbientLight( 0x101030 );
+	scene.add( ambient );
+
+	var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+	directionalLight.position.set( 0, 0, 1 );
+	scene.add( directionalLight );
+
+	// texture
+
+	var manager = new THREE.LoadingManager();
+	manager.onProgress = function ( item, loaded, total ) {
+
+		console.log( item, loaded, total );
+
+	};
+
+	var texture = new THREE.Texture();
+
+	var onProgress = function ( xhr ) {
+		if ( xhr.lengthComputable ) {
+			var percentComplete = xhr.loaded / xhr.total * 100;
+			console.log( Math.round(percentComplete, 2) + '% downloaded' );
+		}
+	};
+
+	var onError = function ( xhr ) {
+	};
+
+	// texture
+
+	if (true) // tests
+	{
+		var loader = new THREE.ImageLoader( manager );
+		loader.load( 'UV_Grid_Sm.jpg', function ( image ) {
+
+			texture.image = image;
+			texture.needsUpdate = true;
+
+		} );
+	}
+	else
+	{
+		var loader = new THREE.ImageLoader( manager );
+		loader.load( 'http://threejs.org/examples/textures/UV_Grid_Sm.jpg', function ( image ) {
+
+			texture.image = image;
+			texture.needsUpdate = true;
+
+		} );
+	}
+
+	// model
+
+	var loader = new THREE.OBJLoader( manager );
+	if (true) // tests
+	{
+		object = loader.parse(content);
+		object.traverse( function ( child ) {
+
+			if ( child instanceof THREE.Mesh ) {
+
+				child.material.map = texture;
+
+			}
+
+		} );
+
+		object.position.y = - 95;
+		scene.add( object );
+	}
+	else {
+		loader.load( 'http://threejs.org/examples/obj/male02/male02.obj', function ( object ) {
+
+			object.traverse( function ( child ) {
+
+				if ( child instanceof THREE.Mesh ) {
+
+					child.material.map = texture;
+
+				}
+
+			} );
+
+			object.position.y = - 95;
+			scene.add( object );
+
+		}, onProgress, onError );
+	}
+
+	renderer = new THREE.WebGLRenderer();
+
+	// textures drop
+
+{
+	var dropZone = renderer.domElement;
+	dropZone.addEventListener('dragover', function	(evt)
+	{
+		evt.stopPropagation();
+		evt.preventDefault();
+		evt.dataTransfer.dropEffect = 'copy';
+	}, false);
+	dropZone.addEventListener('drop', function	handleFileSelect(evt)
+	{
+		evt.stopPropagation();
+		evt.preventDefault();
+
+		var file = evt.dataTransfer.files[0];
+
+		texture.image = file;
+		texture.needsUpdate = true;
+	}, false);
+}
+
+	//
+
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	output.appendChild( renderer.domElement );
+
+	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+	//
+
+	window.addEventListener( 'resize', onWindowResize, false );
+
+}
+
+function onWindowResize() {
+
+	windowHalfX = window.innerWidth / 2;
+	windowHalfY = window.innerHeight / 2;
+
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+function onDocumentMouseMove( event ) {
+
+	mouseX = ( event.clientX - windowHalfX ) / 2;
+	mouseY = ( event.clientY - windowHalfY ) / 2;
+
+}
+
+//
+
+function animate() {
+
+	requestAnimationFrame( animate );
+	render();
+
+}
+
+function render() {
+
+	camera.position.x += ( mouseX - camera.position.x ) * .05;
+	camera.position.y += ( - mouseY - camera.position.y ) * .05;
+
+	camera.lookAt( scene.position );
+
+	renderer.render( scene, camera );
+
+}
+							});
+						})(file);
+						reader.readAsText(file);
+
+						console.log("obj file");
+					}
+					else if (name.match(/(\.jpg|\.jpeg|\.gif|\.png)$/))
+					{
+						reader.onload = (function(f)
+						{
+							return (function (e)
+							{
+								content = e.target.result;
+
+								output.innerHTML += '<p><img src="'+ content +'" /></p>';
+							});
+						})(file);
+						reader.readAsDataURL(file);
+
+						console.log("image file");
+					}
+					else if (name.match(/\.html$/))
+					{
+						console.log("html file");
+					}
+					else
+					{
+						reader.onload = (function(f)
+						{
+							return (function (e)
+							{
+								content = e.target.result;
+
+								output.innerHTML += '<pre style="border: 1px solid black;word-wrap:break-word;" >'+ content.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;") +'</pre>';
+							});
+						})(file);
+						reader.readAsBinaryString(file);
+					}
+				}
+
+
+				function	parser( a_fileContent, items )
+				{
+					var		groupName = "untitled",
+
+							len_a_fileContent = a_fileContent.length,
+							line;
+
+					for (var i = 0; i < len_a_fileContent; i++)
+					{
+						if ((line = a_fileContent[i].trim()).length && line[0] != '#')
+						{
+							var	tokens = line.split(/ /g).filter(function (e){return (e);});
+
+							switch (tokens[0])
+							{
+								case ('g'):
+									groupName = tokens[1];
+									items[groupName] = {};
+									break;
+								default :
+									{
+										var	fnct = tokens[0];
+
+										if (typeof (items[groupName][fnct]) == "undefined")
+											items[groupName][fnct] = [];
+										items[groupName][fnct].push(tokens.slice(1));
+									}
+									break;
+							};
+						}
+					}
+				}
+
+				function	handleFileSelect(evt)
+				{
+					evt.stopPropagation();
+					evt.preventDefault();
+
+					document.querySelector("output").innerHTML = "";
+					document.querySelector("output").appendChild(document.createElement('ul'));
+
+					var files = evt.dataTransfer.files;
+
+					for (var i = 0, f; f = files[i]; i++)
+						displayFileByType(f);
+
+					if ( evt.target.className == "dropzone" )
+					{
+						evt.target.style.background = "";
+					}
+				}
+				function	handleDragOver(evt)
+				{
+					evt.stopPropagation();
+					evt.preventDefault();
+					evt.dataTransfer.dropEffect = 'copy';
+				}
+				function	handleDragEnter(evt)
+				{
+					if ( evt.target.className == "dropzone" )
+					{
+						evt.target.style.background = "AliceBlue";
+					}
+				}
+				function	handleDragLeave(evt)
+				{
+					if ( evt.target.className == "dropzone" )
+					{
+						evt.target.style.background = "";
+					}
+				}
+				var dropZone = document.getElementsByClassName('dropzone')[0];
+				dropZone.addEventListener('dragover', handleDragOver, false);
+				dropZone.addEventListener('dragenter', handleDragEnter, false);
+				dropZone.addEventListener('dragleave', handleDragLeave, false);
+				dropZone.addEventListener('drop', handleFileSelect, false);
+			</script>
+		</p>
+	</body>
+</html>
